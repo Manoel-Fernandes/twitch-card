@@ -1,0 +1,165 @@
+:root {
+    --clr-twitch-like: rgb(191, 12, 214);
+    --clr-text: #fff;
+    --clr-light-grey: #555;
+    --clr-mid-grey: #333;
+    --clr-dark-grey: #222;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--clr-dark-grey);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-outline {
+    width: 157px;
+}
+
+.card {
+    color: var(--clr-text);
+    position: relative;
+}
+
+.image {
+    width: 150px;
+    height: 194.4px;
+    background-color: var(--clr-twitch-like);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.image::before, .image::after {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    z-index: -1;
+    transform-origin: 0% 100%;
+    transform: scale(0, 0);
+}
+
+.image::before {
+    border-left: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-right: 4px solid var(--clr-twitch-like);
+    border-bottom: 4px solid var(--clr-twitch-like);
+    top: -7px;
+    left: 0px;
+}
+
+.image::after {
+    border-left: 3.5px solid var(--clr-twitch-like);
+    border-top: 3.5px solid var(--clr-twitch-like);
+    border-right: 3.5px solid transparent;
+    border-bottom: 3.5px solid transparent;
+    top: 187px;
+}
+
+.image:hover::before, .image:hover::after {
+    animation: image-bg-appear .1s linear alternate both;
+}
+
+.image:hover > img {
+    animation: image-animation .1s linear alternate both;
+}
+
+.game-property {
+    display: flex;
+    justify-content: space-between;
+    height: 1.3rem;
+    margin-top: -8px;
+}
+
+.property a{
+    display: inline-block;
+    padding: 3px 10px;
+    right: 0px;
+    font-weight: 900;
+    border-radius: 4px;
+    margin-right: 7px;
+    margin-top: -5px;
+}
+
+.property a:hover, .category p:hover {
+    background-color: var(--clr-light-grey);
+}
+
+.viewers:hover, .name:hover {
+    color: var(--clr-twitch-like);
+}
+
+.viewers {
+    width: 100px;
+}
+
+.category p {
+    display: inline;
+    background-color: var(--clr-mid-grey);
+    padding: 2px 10px;
+    font-size: .8rem;
+    margin: 0px 2px;
+    border-radius: 1rem;
+}
+
+.category p:first-child {
+    margin-left: 0px;
+}
+
+.viewers {
+    font-size: .8rem;
+}
+
+.image, .category, .viewers, .name, .property {
+    cursor: pointer;
+}
+
+.viewers, .name {
+    transition: color .6s;
+}
+
+.category p, .property a {
+    transition: background-color .5s;
+}
+
+.message {
+    display: none;
+    position: absolute;
+    top: 137px;
+    left: -35px;
+    padding: .05rem .8rem;
+    background-color: var(--clr-mid-grey);
+    border-radius: 3px;
+}
+
+.message-content p{
+    padding: .3rem 1rem;
+    font-size: .9rem;
+    width: 8rem;
+    background-color: var(--clr-mid-grey);
+    border-radius: 4px;
+}
+
+.message-content p:hover {
+    background-color: var(--clr-light-grey);
+    cursor: pointer;
+}
+
+@keyframes image-animation {
+    to {transform: translate(7px, -7px);}
+}
+
+@keyframes image-bg-appear {
+    to {transform: scale(1, 1);}
+}
